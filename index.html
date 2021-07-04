@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="view.js" defer type="module"></script>
+    <script src="model.js" defer type="module"></script>
+    <script src="app.js" defer type="module"></script>
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1 class="app-title">All stories App</h1>
+        <div class="tost-message hide" id="tost-message">OK</div>
+        <aside class="stores-list">
+            <h2 class="stores-list__title">Stores list</h2>
+            <div class="stores-list__header">
+                <div class="stores-list__form-wrapper" id="stores-list__form-wrapper" data-position="0">
+                    <form class="list-form" onsubmit="return false" id="stores__list-form">
+                        <input type="text" class="list-form__input" placeholder="Search" data-position="0">
+                            <button class="button button_search" data-position="0">
+                                <i class="material-icons icon-search">search</i>
+                            </button>
+                            <button class="button button_restart" data-position="0">
+                                <i class="material-icons icon-restart">cached</i>
+                            </button>
+                            <button class="button button_clear" data-position="0">
+                                <i class="material-icons icon-restart">highlight_off</i>
+                            </button>
+                    </form>
+                </div>
+                <div class="stores-list__controls">
+                    <div class="icon icon-arrow_wrapper">
+                        <i class="material-icons icon-arrow">keyboard_arrow_up</i>
+                    </div>
+                    <div class="icon icon-pin_wrapper">
+                        <i class="material-icons icon-pin">attach_file</i>
+                    </div>
+                </div>
+            </div>
+            <div class="spinner hide"></div>
+            <div class="stores-list__block">
+                <ul class="list" id="stores-container">
+                    
+                </ul>
+            </div>
+        </aside>
+        <section class="store-details">
+            <h2 class="store-details__title hide" id="store-details__title">Stores Details</h2>
+            <div class="store-details__header hide" id="store-details__header">
+                <div class="store-details__contacts">
+                    <div class="store-details__info">
+                        <ul class="list-contacts">
+                            <li class="list-contacts__item">
+                                <span class="list-contacts__descr">Email: </span>
+                                <a href="mailto:Lusince_Emard16@yahoo.com" class="list-contacts__link email-js"> Lusince_Emard16@yahoo.com </a>
+                            </li>
+                            <li class="list-contacts__item">
+                                <span class="list-contacts__descr">Phone Number: </span>
+                                <a href="tel:658025365221" class="list-contacts__link phone-js">+6 58 025 365 221</a>
+                            </li>
+                            <li class="list-contacts__item">
+                                <span class="list-contacts__descr">Addres: </span>
+                                <a href="#" class="list-contacts__link address-js">TX, South, 4680 Maggio Vista</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="store-details__more-info">
+                        <ul class="list-info">
+                            <li class="list-info__item">
+                                <div class="list-info__descr">Established Date: </div>
+                                <div class="list-info__date date-js">Dec 20, 2018</div>
+                            </li>
+                            <li class="list-info__item">
+                                <div class="list-info__descr">Floor Area: </div>
+                                <div class="list-info__area area-js">8257</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="store-details__controls">
+                        <div class="icon icon-arrow_wrapper">
+                            <i class="material-icons icon-arrow">keyboard_arrow_up</i>
+                        </div>
+                        <div class="icon icon-pin_wrapper">
+                            <i class="material-icons icon-pin">attach_file</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="store-details__status" id="store-details__status">
+                    <div class="store-details__products-count store-details__status_active" id="store-details__products-count">
+                        <div> 100 <small>All</small></div>
+                    </div>
+                    <div class="store-details__status-wrapper status-ok-js" data-status="OK">
+                        <div class="icon-round icon-round_done">
+                            <div class="icon-round-square_done">
+                                <i class="material-icons icon-done">done</i>
+                            </div>
+                            <span class="status-count">30</span>
+                        </div>
+                        <div class="store-details__status-descr">Ok</div>
+                    </div>
+                    <div class="store-details__status-wrapper status-warning-js" data-status="STORAGE">
+                        <div class="icon-round icon-round_warning">
+                            <i class="material-icons icon-warning">warning</i>
+                            <span class="status-count">50</span>
+                        </div>
+                        <div class="store-details__status-descr">Storage</div>
+                    </div>
+                    <div class="store-details__status-wrapper status-error-js" data-status="OUT_OF_STOCK">
+                        <div class="icon-round icon-round_error">
+                            <i class="material-icons icon-error">error_outline</i>
+                            <span class="status-count">20</span>
+                        </div>
+                        <div class="store-details__status-descr">Out of stock</div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="store-details__table hide" id="store-details__table">
+                <table class="table-product">
+                    <caption class="table-product__caption">
+                        <h3 class="table-product__title">Products</h3>
+                        <div class="table-product__sort">
+                            <h4 class="sort__title">Sort products:</h4>
+                            <div class="store-details__form-wrapper" id="store-details__form-wrapper">
+                                <form class="list-form" onsubmit="return false" id="products__list-form">
+                                    <input type="text" class="list-form__input" placeholder="Search product" data-position="1">
+                                        <button class="button button_search" data-position="1">
+                                            <i class="material-icons icon-search">search</i>
+                                        </button>
+                                        <button class="button button_restart" data-position="1">
+                                            <i class="material-icons icon-restart">cached</i>
+                                        </button>
+                                        <button class="button button_clear" data-position="1">
+                                            <i class="material-icons icon-restart">highlight_off</i>
+                                        </button>
+                                </form>
+                        </div>
+                    </caption>
+                    <thead class="table-product__header">
+                        <tr class="table-product__row">
+                            <th class="table-product__head-col col_name">
+                                <span>Name 
+                                    <button class="button button-sort button-sort_name" data-sort="Name"  data-sort-type="not" data-clicked="clicked">
+                                        <span><i class="material-icons icon-sort">compare_arrows</i></span>
+                                    </button>
+                                 </span> 
+                            </th>
+                            <th class="table-product__head-col col_price">
+                                <span>Price
+                                    <button class="button button-sort button-sort_name" data-sort="Price"  data-sort-type="not" data-clicked="">
+                                        <span><i class="material-icons icon-sort">compare_arrows</i></span>
+                                    </button>
+                                </span>
+                            </th>
+                            <th class="table-product__head-col col_specs">Specs
+                                <button class="button button-sort button-sort_name" data-sort="Specs"  data-sort-type="not" data-clicked="">
+                                    <span><i class="material-icons icon-sort">compare_arrows</i></span>
+                                </button>
+                            </th>
+                            <th class="table-product__head-col col_info">SupplierInfo
+                                <button class="button button-sort button-sort_name" data-sort="MadeIn"  data-sort-type="not" data-clicked="">
+                                    <span><i class="material-icons icon-sort">compare_arrows</i></span>
+                                </button>
+                            </th>
+                            <th class="table-product__head-col col_country">Country of origin
+                                <button class="button button-sort button-sort_name" data-sort="SupplierInfo"  data-sort-type="not" data-clicked="">
+                                    <span><i class="material-icons icon-sort">compare_arrows</i></span>
+                                </button>
+                            </th>
+                            <th class="table-product__head-col col_company">Prod. company
+                                <button class="button button-sort button-sort_name" data-sort="ProductionCompanyName"  data-sort-type="not" data-clicked="">
+                                    <span><i class="material-icons icon-sort">compare_arrows</i></span>
+                                </button>
+                            </th>
+                            <th class="table-product__head-col col_rating">Raiting
+                                <button class="button button-sort button-sort_name" data-sort="Rating"  data-sort-type="not" data-clicked="">
+                                    <span><i class="material-icons icon-sort">compare_arrows</i></span>
+                                </button>
+                            </th>
+                            <th class="table-product__head-col col_arrow-right"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-product__body" id="products-container"></tbody>
+                </table>
+            </div>
+            <div class="empty-page" id="empty-page">
+                <h3 class="empty-page__title">Store is not selected</h3>
+                <div class="empty-page__info">
+                    <i class="material-icons icon-store">store_mall_directory</i>
+                    <div class="empty-page__description">The store is not selected</div>
+                    <div class="empty-page__description">Please select the store to proceed</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="popup" id="popup">
+            <div class="stores-list__modal">
+                <h4 class="stores-list__form-title">Create new store</h4>
+                    <form name="create-store-form" class="create-store-form">
+                        <div class="form-group">
+                        <label for="Name">
+                            <i class="material-icons icon-requirment">ac_unit</i>
+                            Name:
+                        </label>
+                        <input
+                            type="text"
+                            class="form-group__control"
+                            name="Name"
+                            id="Name"
+                            autocomplete="off"
+                            aria-describedby="emailHelp"
+                            placeholder="Enter name"
+                            data-invalid-message="Please provide valid name"
+                        />
+                        <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label for="Email">
+                            <i class="material-icons icon-requirment">ac_unit</i>
+                            Email:
+                        </label>
+                        <input
+                            type="text"
+                            class="form-group__control"
+                            id="Email"
+                            name="Email"
+                            autocomplete="off"
+                            placeholder="Enter emeil"
+                            data-required="email"
+                            data-invalid-message="Please provide valid email example@example.com"
+                        />
+                        <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label for="PhoneNumber">
+                            <i class="material-icons icon-requirment">ac_unit</i>
+                            Phone Number:
+                        </label>
+                        <input
+                            type="text"
+                            class="form-group__control"
+                            id="PhoneNumber"
+                            name="PhoneNumber"
+                            autocomplete="off"
+                            placeholder="Enter phone number"
+                            data-required="number"
+                            data-invalid-message="Please enter number: 375*********"
+                        />
+                        <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label for="Address">
+                            <i class="material-icons icon-requirment">ac_unit</i>
+                            Address:
+                        </label>
+                        <input
+                            type="text"
+                            class="form-group__control"
+                            id="Address"
+                            name="Address"
+                            autocomplete="off"
+                            placeholder="Enter eddress"
+                            data-invalid-message="Please enter address"
+                        />
+                        <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label for="Established">
+                            <i class="material-icons icon-requirment">ac_unit</i>
+                            Established date:
+                        </label>
+                        <input
+                            type="date"
+                            class="form-group__control"
+                            id="Established"
+                            name="Established"
+                            autocomplete="off"
+                            data-invalid-message="Please inter established date"
+                        />
+                        <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label for="FloorArea">
+                            <i class="material-icons icon-requirment">ac_unit</i>
+                            Floor area:
+                        </label>
+                        <input
+                            type="text"
+                            class="form-group__control"
+                            id="FloorArea"
+                            name="FloorArea"
+                            autocomplete="off"
+                            placeholder="Enter floor area (in sq.m)"
+                            data-required="area"
+                            data-invalid-message="Please enter floor area"
+                        />
+                        <div class="invalid-feedback"></div>
+                        </div>
+                    </form>
+                    <div class="form__footer">
+                        <button class="button button_form-create">Create</button>
+                        <button class="button button_cancel">Cancel</button>
+                    </div>
+             </div>
+
+             <div class="store-details__modal">
+                <h4 class="store-details__form-title">Create new Product</h4>
+                    <form name="create-product-form" class="create-product-form" onsubmit="return false">
+                        <div class="form-group">
+                        <label for="Name">
+                            <i class="material-icons icon-requirment">ac_unit</i>
+                            Name:
+                        </label>
+                        <input
+                            type="text"
+                            class="form-group__control"
+                            name="Name"
+                            id="Name"
+                            aria-describedby="emailHelp"
+                            placeholder="Enter name"
+                            data-invalid-message="Please enter product name"
+                        />
+                        <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label for="Price">
+                            <i class="material-icons icon-requirment">ac_unit</i>
+                            Price:
+                        </label>
+                        <input
+                            type="text"
+                            class="form-group__control"
+                            id="Price"
+                            name="Price"
+                            placeholder="Enter price"
+                            data-required="price"
+                            data-invalid-message="Please enter price"
+                        /> USD
+                        <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label for="Specs">
+                            <i class="material-icons icon-requirment">ac_unit</i>
+                            Specs:
+                        </label>
+                        <input
+                            type="text"
+                            class="form-group__control"
+                            id="Specs"
+                            name="Specs"
+                            placeholder="Enter product specs"
+                            data-invalid-message="Please enter product specs"
+                        />
+                        <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Rating">
+                                <i class="material-icons icon-requirment">ac_unit</i>
+                                Rating:
+                            </label>
+                            <input
+                                type="number"
+                                class="form-group__control"
+                                id="Rating"
+                                name="Rating"
+                                placeholder="Enter rating 1...5"
+                                data-required="rating"
+                                data-invalid-message="Please enter rating 1...5"
+                            />
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="SupplierInfo">
+                                <i class="material-icons icon-requirment">ac_unit</i>
+                                Supplier info:
+                            </label>
+                            <input
+                                type="text"
+                                class="form-group__control"
+                                id="SupplierInfo"
+                                name="SupplierInfo"
+                                placeholder="Enter supplier info"
+                                data-invalid-message="Please enter supplier info"
+                            />
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label for="MadeIn">
+                            <i class="material-icons icon-requirment">ac_unit</i>
+                            Made in:
+                        </label>
+                        <input
+                            type="text"
+                            class="form-group__control"
+                            id="MadeIn"
+                            name="MadeIn"
+                            placeholder="Enter origin country"
+                            data-invalid-message="Please enter origin country"
+                        />
+                        <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ProductionCompanyName">
+                                <i class="material-icons icon-requirment">ac_unit</i>
+                                Production company name:
+                            </label>
+                            <input
+                                type="text"
+                                class="form-group__control"
+                                id="ProductionCompanyName"
+                                name="ProductionCompanyName"
+                                placeholder="Enter manufacturer name"
+                                data-invalid-message="Please enter manufacturer name"
+                            />
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Status">
+                                <i class="material-icons icon-requirment">ac_unit</i>
+                                Status
+                            </label>
+                            <select name="Status" class="select-status" id="select-status">
+                                <option value="OK" selected>OK</option>
+                                <option value="STORAGE">STORAGE</option>
+                                <option value="OUT_OF_STOCK">OUT OF STOCK</option>
+                              </select>
+                        </div>   
+                    </form>
+                    <div class="form__footer">
+                        <button class="button button_form-create">Create</button>
+                        <button  class="button button_cancel">Cancel</button>
+                    </div>
+             </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__aside">
+            <button class="button button_create button_create-store" id="button_create-store">
+                <i class="material-icons">add</i>
+                <span>Create</span>
+            </button>
+        </div>
+        <div class="footer__section">
+            <button class="button button_create button_create-product" id="button_create-product">
+                <i class="material-icons">add</i>
+                <span>Create</span>
+            </button>
+            <button class="button button_delete" id="button_delete">
+                <i class="material-icons">delete</i>
+                <span>Delete</span>
+            </button>
+        </div>
+    </footer>
+</body>
+</html>
